@@ -24,9 +24,23 @@
   text-decoration: none;
 }
 
+#content {
+  margin: 0 auto;
+  width: 960px;
+}
+
 a, a:link {
   color: green;
 }
 a:visited {
   color: #999;
+}
+
+.slice {
+  display: block;
+  float: left;
+  width: 175px;
+}
+#entries li {
+  clear: both;
 }

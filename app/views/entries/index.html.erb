@@ -3,7 +3,7 @@
 <%- if @entries.empty? -%>
   <em>No entries.</em>
 <%- else -%>
-  <ul>
+  <ul id="entries">
   <%- @entries.each do |entry| -%>
     <li>
       <%- entry.each do |word, media| -%>
