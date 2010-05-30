@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>5slices</title>
-    <%#= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'main' %>
     
     <script src="http://www.google.com/jsapi"></script>
     <script>
@@ -16,20 +16,21 @@
     </script>
   </head>
   <body>
-    <%- if signed_in? -%>
-      <%= link_to 'Logout', session_url, :method => :delete %></li>
-    <%- end -%>
-    
     <div id="wrapper">
-      <h1 style="font-family:Georgia,serif; font-style:italic;">5slices</h1>
-      <div id="content">
-        
-        <%- if signed_in? and not current_page?(new_entry_url) -%>
-          <%= link_to 'Post new entry', new_entry_url %>
+      <div id="nav">
+        <%- if signed_in? -%>
+          <%= link_to 'post', new_entry_path %> 
+          ( <%= link_to 'read', user_path(session[:screen_name]) %> )
+          <%= link_to 'logout', session_path, :method => :delete %>
         <%- end -%>
-        
-        <hr />
-        
+      </div>
+      
+      <h1 id="logo">
+        <a href="/">5slices</a>
+      </h1>
+      
+      <hr />
+      <div id="content">
         <%= yield %>
       </div>
     </div>
