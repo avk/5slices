@@ -23,9 +23,9 @@ module EntriesHelper
     elsif pic?(media)
       return "<img src='#{media}' style='width:#{width}px;height:#{height};'/>"
     elsif link?(media)
-      return "<p class='link_media' style='width:#{width}px; height:#{height}px;'>#{auto_link(media)}</p>"
+      return "<p class='link_media'>#{auto_link(media)}</p>"
     else
-      return "<p class='text_media' style='width:#{width}px; height:#{height}px;'>#{media}</p>"
+      return "<p class='text_media'>#{media}</p>"
     end
   end
   

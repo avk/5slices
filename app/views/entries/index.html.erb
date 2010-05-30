@@ -15,8 +15,9 @@
       <%- word_count = 0 -%>
       <%- entry.each do |word, media| -%>
         <div class="slice">
-          <a href="#" class="word" order="<%= word_count += 1 %>"><%= word %></a><br />
           <div class="media_preview"><%= preview_media(media) %></div>
+          <a href="#" class="word" order="<%= word_count += 1 %>"><%= word %></a>
+          
         </div>
       <%- end -%>
       
@@ -24,7 +25,7 @@
         <%- entry.each do |word, media| -%>
           <div class="slide">
             <h1 class="word"><%= word %></h1>
-            <div class="media_preview"><%= full_media(media) %></div>
+            <div class="full_media"><%= full_media(media) %></div>
           </div>
         <%- end -%>
       </div>
