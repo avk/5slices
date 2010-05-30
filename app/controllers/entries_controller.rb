@@ -20,28 +20,17 @@ class EntriesController < ApplicationController
   end
 
   def create # post new entry
-    annotations = [{'5slices' => {'my_app' => 'finally'}}]
-    # annotations = [
-    #   {
-    #     '5slices' => {
-    #       'Morrison' => 'No eternal reward will forgive us now for wasting the dawn. - Jim Morrison',
-    #       'overload' => 'http://slipstre.am/',
-    #       'Chirp' => 'http://farm5.static.flickr.com/4046/4522190635_8e233783c1.jpg',
-    #       'summer' => 'toes deep in Croatan (Virginia Beach, VA)',
-    #       'Lost' => 'http://www.youtube.com/watch?v=G-DShnvNNv0'
-    #     }
-    #   }
-    # ]
-    
-    options = {}
-    options.update(:annotations => annotations.to_json)
+    annotations = [
+      { '5slices' => params[:annotations] }
+    ]
+    options = { :annotations => annotations.to_json }
     
     begin
       tweet = client.update(params[:status] + " #5slices http://5slices.com/u/#{session[:screen_name]}", options)
     rescue Exception => e
       tweet = {}
     end
-    render :json => tweet.to_json
+    render :json => tweet.to_json # DEBUG
   end
   
 end

@@ -1,8 +1,75 @@
+<style type="text/css">
+  .actionable {
+    display: none;
+  }
+</style>
+
 <div id="update">
-  <%- form_tag entries_url, :method => :post do -%>
+  <%- form_tag entries_url, :method => :post, :id => "new_entry" do -%>
     <label for="status">What 5 words describe today?</label><br />
     <%= text_area_tag 'status' %>
     <%= submit_tag 'post' %>
+    
+    <br /><br /><br />
+    
+    <ol id="media">
+      <%- 5.times do -%>
+      <li>
+        <div class="default">
+          <h2>Please enter a word.</h2>
+        </div>
+        <div class="actionable">
+          <h2>What does "word" remind you of?</h2>
+          <%= text_area_tag 'annotations[word]' %>
+        </div>
+      </li>
+      <%- end -%>
+    </ol>
   <%- end -%>
 </div>
 
+<script type="text/javascript" charset="utf-8">
+google.setOnLoadCallback(function() {
+  var saved_words = ['','','','',''];
+  function update_media() {
+    var words = $("#status").val().split(" ");
+    
+    if (/^\s*$/.test( $("#status").val()) ) {
+      $("#media li .actionable").hide();
+      $("#media li .default").show();
+    }
+    
+    for (var i = 0; i < words.length; i++) {
+      if (words[i] !== saved_words[i]) {
+        saved_words[i] = words[i];
+        var which_media = $("#media li:eq(" + i + ")");
+        which_media.find('.actionable h2').html("What does '" + words[i] + "' remind you of?");
+        which_media.find('.actionable textarea').attr('name', 'annotations[' + words[i] + ']');
+        
+        which_media.find('.default').hide();
+        which_media.find('.actionable').show();
+      }
+    }
+  }
+  
+  $("#status").
+    keypress(function(event) {
+      // FIXME: improve this, make it fire more often, for more events
+      // if (event.which === 32) { // space(bar)
+        update_media();
+      // }
+    }).
+    change(function(event) {
+      update_media();
+    });
+  
+  // TODO onsubmit:
+  //   status exactly 5 words
+  //   status <= 100 chars
+  //   each of media items <= 75 chars
+  
+  // TODO
+  // counter on status
+  // counters on .actionable text areas
+});
+</script>

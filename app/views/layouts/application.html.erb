@@ -4,7 +4,16 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>5slices</title>
-    <%= stylesheet_link_tag 'main' %>
+    <%#= stylesheet_link_tag 'main' %>
+    
+    <script src="http://www.google.com/jsapi"></script>
+    <script>
+      google.load("jquery", "1.4");
+      google.load("jqueryui", "1.8");
+      google.setOnLoadCallback(function() {
+        // alert('jQuery loaded!'); // DEBUG
+      });
+    </script>
   </head>
   <body>
     <%- if signed_in? -%>
@@ -26,6 +35,5 @@
     </div>
     
     <hr />
-    <%= javascript_include_tag 'main' %>
   </body>
 </html>
