@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>5slices</title>
-    <%= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'main', 'south-street/jquery-ui-1.8.1.custom' %>
     
     <script src="http://www.google.com/jsapi"></script>
     <script>
@@ -14,6 +14,8 @@
         // alert('jQuery loaded!'); // DEBUG
       });
     </script>
+    
+    <%= javascript_include_tag 'jquery.divslideshow' %>
   </head>
   <body>
     <div id="wrapper">

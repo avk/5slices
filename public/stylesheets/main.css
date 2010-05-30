@@ -44,3 +44,11 @@ a:visited {
 #entries li {
   clear: both;
 }
+
+.slide {
+  overflow: hidden !important;
+}
+
+h1.word {
+  margin: 0;
+}

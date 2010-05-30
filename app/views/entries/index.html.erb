@@ -5,14 +5,53 @@
 <%- else -%>
   <ul id="entries">
   <%- @entries.each do |entry| -%>
-    <li>
+    <li id="entry_<%= entry.object_id %>">
+      <%- word_count = 0 -%>
       <%- entry.each do |word, media| -%>
         <div class="slice">
-          <div class="word"><strong><%= word %></strong></div>
+          <a href="#" class="word" order="<%= word_count += 1 %>"><%= word %></a><br />
           <div class="media_preview"><%= preview_media(media) %></div>
         </div>
       <%- end -%>
+      
+      <div id="slideshow_<%= entry.object_id %>" class="slideshow">
+        <%- entry.each do |word, media| -%>
+          <div class="slide">
+            <h1 class="word"><%= word %></h1>
+            <div class="media_preview"><%= full_media(media) %></div>
+          </div>
+        <%- end -%>
+      </div>
     </li>
   <%- end -%>
   </ul>
 <%- end -%>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $('.slideshow').
+    dialog({ 
+      autoOpen: false, 
+      modal: true,
+      minWidth: 715,
+      maxWidth: 715,
+      width: 715
+    }).
+    divSlideShow({
+      arrow: 'split', 
+      loop: 0,
+      height: 475,
+      width: 700
+    });
+  
+  $('.slice a.word').click(function() {
+    var entry = $(this).parent().parent(),
+        entry_id = entry.attr('id').substr(6),
+        dialog = $("#slideshow_" + entry_id),
+        tab = parseInt($(this).attr('order'), 10) - 1;
+    
+    dialog.dialog('open');
+    dialog.find('.dssControl[page=' + tab + ']').click();
+  });
+});
+</script>
