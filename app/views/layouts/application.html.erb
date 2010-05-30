@@ -15,15 +15,8 @@
       <h1>5slices</h1>
       <div id="content">
         
-        <%- if signed_in? -%>
-          <div id="update">
-            <%- form_tag entries_url, :method => :post do -%>
-              <span id="countdown">140</span>
-              <label for="status">What 5 words describe today?</label>
-              <%= text_area_tag 'status' %>
-              <%= submit_tag 'post' %>
-            <%- end -%>
-          </div>
+        <%- if signed_in? and not current_page?(new_entry_url) -%>
+          <%= link_to 'Post new entry', new_entry_url %>
         <%- end -%>
         
         <hr />

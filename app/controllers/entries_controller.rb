@@ -16,8 +16,22 @@ class EntriesController < ApplicationController
     end
   end
 
-  def create # new entry
+  def new # start new entry
+  end
+
+  def create # post new entry
     annotations = [{'5slices' => {'my_app' => 'finally'}}]
+    # annotations = [
+    #   {
+    #     '5slices' => {
+    #       'Morrison' => 'No eternal reward will forgive us now for wasting the dawn. - Jim Morrison',
+    #       'overload' => 'http://slipstre.am/',
+    #       'Chirp' => 'http://farm5.static.flickr.com/4046/4522190635_8e233783c1.jpg',
+    #       'summer' => 'toes deep in Croatan (Virginia Beach, VA)',
+    #       'Lost' => 'http://www.youtube.com/watch?v=G-DShnvNNv0'
+    #     }
+    #   }
+    # ]
     
     options = {}
     options.update(:annotations => annotations.to_json)
