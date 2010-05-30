@@ -1,1 +1,51 @@
 5slices!
+
+What can you do?
+1. Post a new entry
+    A. enter 5 words that describe today
+    B. attach suggested media to each word
+        a. video: view (overlay?)
+        b. audio: hear 
+        c. link: open in new tab
+        d. text: display
+        e. picture: display (overlay?)
+    C. attach your own media to each word
+        all must be < 75 characters
+        a. text
+        b. link
+        c. picture
+            link that ends in .jpg, .jpeg, .gif, .png
+        c. video
+            youtube link
+        d. audio
+            ? link
+    D. tweet your slices with 
+        a. exactly 5 words
+            check for exactly 4 single white space characters on submission
+            must be < 100 characters for next steps
+        b. annotations
+            add an annotation for each word with attached media:
+            convert "media" to "text", "url", "image", "audio_url", or "video_url" based on what was chosen / input by the user
+                {
+                    "5slices" => {
+                        "word" => EXAMPLE,
+                        "media" => SOME_MEDIA
+                    }
+                }
+        c. #5slices hashtag
+            append hashtag to tweet
+        d. link to this entry
+            save entry to db
+            grab id of saved entry for link
+            append link to tweet
+        (e.g. "hackathon annotations metadata all-nighter SF #5slices) http://5slices.com/s/1234"
+    
+2. View your entries
+    (Look up from db by author)
+    A. see list of all your daily entries with metadata previews
+    B. click on any word or media for overlay to view enlarged media
+    C. in overlay, navigate to next word:media pair like a slideshow
+
+3. View a specific entry
+    (Look up from db by id)
+    (Just like a list of entries but with one entry)
