@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>5slices</title>
+    <%= stylesheet_link_tag 'main' %>
+  </head>
+  <body>
+    <%- if signed_in? -%>
+      <%= link_to 'Logout', session_url, :method => :delete %></li>
+    <%- end -%>
+    
+    <div id="wrapper">
+      <h1>5slices</h1>
+      <div id="content">
+        
+        <%- if signed_in? -%>
+          <div id="update">
+            <%- form_tag entries_url, :method => :post do -%>
+              <span id="countdown">140</span>
+              <label for="status">What 5 words describe today?</label>
+              <%= text_area_tag 'status' %>
+              <%= submit_tag 'post' %>
+            <%- end -%>
+          </div>
+        <%- end -%>
+        
+        <hr />
+        
+        <%= yield %>
+      </div>
+    </div>
+    
+    <hr />
+    <%= javascript_include_tag 'main' %>
+  </body>
+</html>

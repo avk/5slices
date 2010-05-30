@@ -2,9 +2,26 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include Twitter::AuthenticationHelpers
+  
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  rescue_from Twitter::Unauthorized, :with => :force_sign_in
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  private
+    def oauth
+      @oauth ||= Twitter::OAuth.new(ConsumerToken, ConsumerSecret, :sign_in => true)
+    end
+
+    def client
+      oauth.authorize_from_access(session[:atoken], session[:asecret])
+      Twitter::Base.new(oauth)
+    end
+    helper_method :client
+
+    def force_sign_in(exception)
+      reset_session
+      flash[:error] = 'Seems your credentials are not good anymore. Please sign in again.'
+      redirect_to new_session_path
+    end
 end
