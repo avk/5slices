@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'entries'
   map.resources :entries
   
+  map.user 'u/:screen_name', :controller => :entries, :action => :index
+  
   map.resource :session
   map.finalize_session 'session/finalize', :controller => 'sessions', :action => 'finalize'
   

@@ -33,19 +33,13 @@ What can you do?
                     }
                 }
         c. #5slices hashtag
-            append hashtag to tweet
-        d. link to this entry
-            save entry to db
-            grab id of saved entry for link
-            append link to tweet
-        (e.g. "hackathon annotations metadata all-nighter SF #5slices) http://5slices.com/s/1234"
+            append "#5slices" to tweet
+        d. link to user's entires
+            append "http://5slices.com/u/USERNAME" to tweet
+        (e.g. "hackathon annotations metadata all-nighter SF #5slices http://5slices.com/u/artvankilmer")
     
-2. View your entries
-    (Look up from db by author)
-    A. see list of all your daily entries with metadata previews
-    B. click on any word or media for overlay to view enlarged media
+2. View a user's entries
+    (Look up user_timeline and ignore any tweets that don't contain #5slices)
+    A. see list of user's entries with media previews
+    B. click on any word or media for overlay to view full media
     C. in overlay, navigate to next word:media pair like a slideshow
-
-3. View a specific entry
-    (Look up from db by id)
-    (Just like a list of entries but with one entry)

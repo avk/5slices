@@ -1,1 +1,18 @@
-index
+@<%= @screen_name %>'s entries:
+
+<%- if @entries.empty? -%>
+  <em>No entries.</em>
+<%- else -%>
+  <ul>
+  <%- @entries.each do |entry| -%>
+    <li>
+      <%- entry.each do |word, media| -%>
+        <div class="slice">
+          <div class="word"><strong><%= word %></strong></div>
+          <div class="media_preview"><%= preview_media(media) %></div>
+        </div>
+      <%- end -%>
+    </li>
+  <%- end -%>
+  </ul>
+<%- end -%>

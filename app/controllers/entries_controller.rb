@@ -2,17 +2,17 @@ class EntriesController < ApplicationController
 
   before_filter :authenticate
 
-  def index # your entries
-  end
-
-  def show # individual entry
-    @entry = Entry.find(params[:id])
-    words = @entry.words.split(" ")
+  def index # a user's entries
+    @screen_name = (params[:screen_name]) ? params[:screen_name] : session[:screen_name]
+    # @entries = client.user_timeline(:screen_name => @screen_name) # DEBUG
     
-    # map words => associated media
-    @slices = {}
-    (1..5).each do |count|
-      @slices[words[count - 1]] = @entry.send(("media#{count}").to_sym)
+    @entries = []
+    client.user_timeline(:screen_name => @screen_name).each do |tweet|
+      if tweet.text =~ /\s#5slices\s/ and tweet.annotations
+        tweet.annotations.each do |a| 
+          @entries << a["5slices"].to_hash if a.has_key?("5slices")
+        end
+      end
     end
   end
 
@@ -23,16 +23,11 @@ class EntriesController < ApplicationController
     options.update(:annotations => annotations.to_json)
     
     begin
-      # @entry = Entry.new(:author => session[:screen_name])
-      # @entry.words = params[:status]
-      # (1..5).each do |count|
-      #   @entry.send("media#{count}=".to_sym, params["media#{count}".to_sym])
-      # end
-      tweet = client.update(params[:status] + " #5slices", options)
+      tweet = client.update(params[:status] + " #5slices http://5slices.com/u/#{session[:screen_name]}", options)
     rescue Exception => e
       tweet = {}
     end
     render :json => tweet.to_json
   end
-
+  
 end
