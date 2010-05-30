@@ -30,7 +30,8 @@ class EntriesController < ApplicationController
     rescue Exception => e
       tweet = {}
     end
-    render :json => tweet.to_json # DEBUG
+    # render :json => tweet.to_json # DEBUG
+    redirect_to user_path(session[:screen_name])
   end
   
 end

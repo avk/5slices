@@ -7,9 +7,10 @@
 <div id="update">
   <%- form_tag entries_url, :method => :post, :id => "new_entry" do -%>
     <label for="status">What 5 words describe today?</label><br />
+    <div style="position:relative; height:50px;">
     <%= text_area_tag 'status' %>
-    <%= submit_tag 'post' %>
-    
+    <%= submit_tag 'post', :id => 'post_status' %>
+    </div>
     <br /><br /><br />
     
     <ol id="media">
