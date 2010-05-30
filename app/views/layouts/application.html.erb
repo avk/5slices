@@ -24,6 +24,8 @@
           <%= link_to 'post', new_entry_path %> 
           ( <%= link_to 'read', user_path(session[:screen_name]) %> )
           <%= link_to 'logout', session_path, :method => :delete %>
+        <%- else -%>
+          <a href="http://twitter.com/artvankilmer">by @artvankilmer</a>
         <%- end -%>
       </div>
       
@@ -31,14 +33,13 @@
         <a href="/">5slices</a>
       </h1>
       
-      <hr />
+      <!-- <hr /> -->
       <div id="content">
         <%= yield %>
         
         <div style="clear:both"></div>
       </div>
     </div>
-    
-    <hr />
+    <!-- <hr /> -->
   </body>
 </html>

@@ -1,3 +1,13 @@
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+#wrapper {
+  margin: 0;
+  padding: 0;
+}
+
 #nav {
   float: right;
   font-family: Helvetica, sans-serif;
@@ -7,16 +17,18 @@
   top: 8px;
 }
 #nav a, #nav a:visited {
-  color: #bbb;
+  color: #ccc;
   text-decoration: none;
 }
 #nav a:hover {
-  color: green;
+  color: orange;
   text-decoration: underline;
 }
 
 #logo {
+  border-bottom: 3px double black;
   font-family: Georgia,serif;
+  font-size: 3em;
   font-style: italic;
 }
 #logo a {
@@ -25,12 +37,17 @@
 }
 
 #content {
-  margin: 0 auto;
+  border-bottom: 1px dotted black;
+  margin: 25px auto;
+  padding-bottom: 10px;
   width: 960px;
+}
+#content h2 {
+  color: orange;
 }
 
 a, a:link {
-  color: green;
+  color: orange;
 }
 a:visited {
   color: #999;

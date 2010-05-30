@@ -1,4 +1,10 @@
-@<%= @screen_name %>'s entries:
+<h2 style="text-align: center;">
+<%- if @screen_name == session[:screen_name] -%>
+  Your entries (@<%= @screen_name %>):
+<%- else -%>
+  @<%= @screen_name %>'s entries:
+<%- end -%>
+</h2>
 
 <%- if @entries.empty? -%>
   <em>No entries.</em>
@@ -39,7 +45,7 @@ $(function() {
     }).
     divSlideShow({
       arrow: 'split', 
-      loop: 0,
+      loop: 0,  
       height: 475,
       width: 700
     });

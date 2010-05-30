@@ -1,6 +1,19 @@
 <div id="login">
-  <h2>Sign In With Twitter</h2>
-  <%- form_tag session_path do -%>
-    <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
-  <%- end -%>
+  <%= image_tag 'j1.jpg', :style => 'float: left; width: 250px' %>
+  <div style="margin-left: 275px">
+    <h2>The Easiest Journal You'll Ever Keep</h2>
+  
+    <p style="width: 431px">
+      Tried keeping a journal but found it hard to keep writing?
+      <br />
+      With 5slices, just pick <strong>5 words to describe today</strong>. 
+      Say more with each word by attaching your favorite quote, picture, or YouTube link. 
+      <!-- Quickly capture and share your day now! -->
+      Capture your day in quick, scrapbook-like entries and share them over Twitter!
+    </p>
+  
+    <%- form_tag session_path do -%>
+      <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
+    <%- end -%>
+  </div>
 </div>
