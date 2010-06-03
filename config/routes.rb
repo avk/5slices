@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.root :controller => 'entries'
+  map.root :controller => 'sessions', :action => 'new'
   map.resources :entries
   
   map.user 'u/:screen_name', :controller => :entries, :action => :index
