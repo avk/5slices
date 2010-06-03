@@ -1,7 +1,6 @@
 class EntriesController < ApplicationController
 
   before_filter :authenticate
-  before_filter :check_for_annotations
 
   def index # a user's entries
     @screen_name = (params[:screen_name]) ? params[:screen_name] : session[:screen_name]
@@ -34,12 +33,5 @@ class EntriesController < ApplicationController
     # render :json => tweet.to_json # DEBUG
     redirect_to user_path(session[:screen_name])
   end
-
-  protected
   
-  def check_for_annotations
-    tweets = client.home_timeline(:count => 1)
-    @annotations_enabled = tweets[0].has_key?("annotations")
-  end
-
 end

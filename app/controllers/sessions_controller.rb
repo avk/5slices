@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    @annotations_enabled = true # FIXME: quick hack to get application layout to render content of logged-out home page
   end
 
   def create

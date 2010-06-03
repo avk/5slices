@@ -33,19 +33,13 @@
         <a href="/">5slices</a>
       </h1>
       
+      <!-- <hr /> -->
       <div id="content">
-        <%- if @annotations_enabled -%>
         <%= yield %>
-        <%- else -%>
-        <div id="no_annotations">
-          Sorry, your Twitter account does not have annotations yet (few do).<br />
-          You can <strong><a target="_blank" href="http://twitter.com/?status=@Twitter%20can%20you%20please%20enable%20annotations%20for%20my%20account%20so%20I%20can%20use%20@5slices?%20Thanks!">try asking Twitter to let you try them out!</a></strong>
-          <br /><br />
-          Please come back when Twitter has enabled them for you!
-        </div>
-        <%- end -%>
+        
         <div style="clear:both"></div>
       </div>
     </div>
+    <!-- <hr /> -->
   </body>
 </html>
