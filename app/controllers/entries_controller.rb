@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
 
   before_filter :authenticate
+  before_filter :annotateable
 
   def index # a user's entries
     @screen_name = (params[:screen_name]) ? params[:screen_name] : session[:screen_name]

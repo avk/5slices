@@ -1,12 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.root :controller => 'entries'
+  map.root :controller => 'sessions', :action => 'new'
   map.resources :entries
   
   map.user 'u/:screen_name', :controller => :entries, :action => :index
   
   map.resource :session
   map.finalize_session 'session/finalize', :controller => 'sessions', :action => 'finalize'
+  map.no_annotations 'no_annotations', :controller => 'sessions', :action => 'no_annotations'
   
   # The priority is based upon order of creation: first created -> highest priority.
 

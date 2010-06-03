@@ -38,5 +38,13 @@ module Twitter
       def store_location
         session[:return_to] = request.request_uri if request.get?
       end
+      
+      def has_annotations?
+        client.home_timeline(:count => 1)[0].has_key?("annotations")
+      end
+      
+      def annotateable
+        redirect_to no_annotations_path unless has_annotations?
+      end
   end
 end

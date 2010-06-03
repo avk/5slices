@@ -24,7 +24,14 @@ class SessionsController < ApplicationController
     session[:atoken] = oauth.access_token.token
     session[:asecret] = oauth.access_token.secret
 
-    sign_in(profile)
-    redirect_back_or root_path
+    if has_annotations?
+      sign_in(profile)
+      redirect_back_or entries_path
+    else
+      redirect_to no_annotations_path
+    end
+  end
+  
+  def no_annotations
   end
 end
